@@ -5,6 +5,7 @@
  */
 package opmanagementsystem;
 import java.sql.*;
+import javax.swing.JOptionPane;
 public class UserLoginPage extends javax.swing.JFrame {
 
     Connection conn;
@@ -111,8 +112,6 @@ public class UserLoginPage extends javax.swing.JFrame {
         String name = uusername.getText();
         String pass = upassword.getText();
         String utype = uutype.getSelectedItem().toString();
-        String Doctor = "Doctor";
-        String Receptionist = "Receptionist";
         try
         {
             String sql = "SELECT * FROM user WHERE username = ? AND password = ? AND usertype = ?";
@@ -123,13 +122,37 @@ public class UserLoginPage extends javax.swing.JFrame {
             res = pst.executeQuery();
             if(res.next())
             {
-                 resname = res.getString("usertype");
-               
+                String resname = res.getString("usertype");
+                 switch(resname)
+           {
+                case "Receptionist" :
+                    ReceptionistDashBordPage recep = new ReceptionistDashBordPage();
+                   recep.setVisible(true);
+                   uusername.setText("");
+                   upassword.setText("");
+                   uutype.setSelectedIndex(-1);
+                   uusername.requestFocus();
+                    break;
+                case "Doctor" :
+                   int id = res.getInt("id");
+                   DoctorDashBordPage docpage = new DoctorDashBordPage(id);
+                   docpage.setVisible(true);
+                   uusername.setText("");
+                   upassword.setText("");
+                   uutype.setSelectedIndex(-1);
+                   uusername.requestFocus();
+                   break;
+              default :
+                  JOptionPane.showMessageDialog(null,"Username and Password Incorrect !");
+                   break;
+           }
             }
-            if(resname.equals(Receptionist))
-            {
-                ReceptionistDashBordPage recep = new ReceptionistDashBordPage();
-                recep.setVisible(true);
+            else {
+                JOptionPane.showMessageDialog(null,"Username and Password Incorrect !");
+                uusername.setText("");
+                   upassword.setText("");
+                   uutype.setSelectedIndex(-1);
+                   uusername.requestFocus();
             }
         } catch(Exception ex)
         {

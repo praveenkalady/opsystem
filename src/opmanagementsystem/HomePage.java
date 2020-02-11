@@ -225,8 +225,8 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void usersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersActionPerformed
-        UserLoginPage user = new UserLoginPage();
-        user.setVisible(true);
+        UserLoginPage use = new UserLoginPage();
+        use.setVisible(true);
     }//GEN-LAST:event_usersActionPerformed
 
     /**

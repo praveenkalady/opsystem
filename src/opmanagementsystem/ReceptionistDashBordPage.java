@@ -18,6 +18,7 @@ public class ReceptionistDashBordPage extends javax.swing.JFrame {
         conn = DataBase.DBconnect();
          receptiontable.getTableHeader().setBackground(new Color(32,136,203));
         receptiontable.getTableHeader().setForeground(Color.WHITE);
+        receptiontable.setSelectionForeground(Color.WHITE);
         rrefresh.doClick();
     }
 
@@ -180,7 +181,12 @@ public class ReceptionistDashBordPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookActionPerformed
-        
+         DefaultTableModel tableModel = (DefaultTableModel) receptiontable.getModel();
+        int row = receptiontable.getSelectedRow();
+        String id = tableModel.getValueAt(row, 0).toString();
+        String name = tableModel.getValueAt(row, 1).toString();
+       BookDoctorPage book = new BookDoctorPage(id,name);
+       book.setVisible(true);
     }//GEN-LAST:event_bookActionPerformed
 
     private void rrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rrefreshActionPerformed
@@ -205,7 +211,7 @@ public class ReceptionistDashBordPage extends javax.swing.JFrame {
     }//GEN-LAST:event_rrefreshActionPerformed
 
     private void rexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rexitActionPerformed
-        // TODO add your handling code here:
+       this.setVisible(false);
     }//GEN-LAST:event_rexitActionPerformed
 
     /**
