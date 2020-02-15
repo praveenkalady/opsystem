@@ -90,8 +90,8 @@ public class UserLoginPage extends javax.swing.JFrame {
         });
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 661, 117, 53));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/red-led-light-with-silhouette-of-a-man-3094799.jpg"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 700, 830));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pina-messina-iIDiRMITYik-unsplash.jpg"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, -1, 830));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

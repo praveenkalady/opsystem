@@ -191,12 +191,12 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/red-led-light-with-silhouette-of-a-man-3094799.jpg"/>
+              <Image iconType="3" name="/img/pina-messina-iIDiRMITYik-unsplash.jpg"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1" y="0" width="700" height="830"/>
+              <AbsoluteConstraints x="1" y="0" width="-1" height="830"/>
             </Constraint>
           </Constraints>
         </Component>

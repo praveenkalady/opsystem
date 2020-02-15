@@ -163,7 +163,7 @@ public class ReceptionistDashBordPage extends javax.swing.JFrame {
         receptiontable.setSelectionBackground(new java.awt.Color(255, 0, 0));
         jScrollPane1.setViewportView(receptiontable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 1000, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 1000, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

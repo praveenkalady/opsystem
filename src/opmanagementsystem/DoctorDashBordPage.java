@@ -215,20 +215,28 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void phistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phistoryActionPerformed
-        this.setVisible(false);
+
     }//GEN-LAST:event_phistoryActionPerformed
 
     private void dprescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dprescriptionActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) patienttable.getModel();
+        int row = patienttable.getSelectedRow();
+        String id = tableModel.getValueAt(row, 0).toString();
+        String name = tableModel.getValueAt(row, 1).toString();
+        String age = tableModel.getValueAt(row, 2).toString();
+        String date = tableModel.getValueAt(row,3).toString();
+        String desease = tableModel.getValueAt(row,6).toString();
+        PriscriptionPage pric = new PriscriptionPage(id,name,age,date,desease);
+        pric.setVisible(true);
     }//GEN-LAST:event_dprescriptionActionPerformed
 
     private void pexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pexitActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_pexitActionPerformed
 
     private void drefresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drefresh2ActionPerformed
       DefaultTableModel tableModel = (DefaultTableModel) patienttable.getModel();
-      String sql = "SELECT * FROM patients WHERE doctorid=?";
+      String sql = "SELECT * FROM patients WHERE doctorid=? AND done is null";
       try {
           pst = conn.prepareStatement(sql);
           pst.setInt(1, newid);
