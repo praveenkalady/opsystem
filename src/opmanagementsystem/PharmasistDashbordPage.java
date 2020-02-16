@@ -6,33 +6,25 @@
 package opmanagementsystem;
 
 import java.awt.Color;
-import java.sql.*;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author prave
- */
-public class DoctorDashBordPage extends javax.swing.JFrame {
+
+import java.sql.*;
+public class PharmasistDashbordPage extends javax.swing.JFrame {
 
     Connection conn;
-    ResultSet res;
     PreparedStatement pst;
-    int newid;
-    public DoctorDashBordPage(int id) {
+    ResultSet res;
+    public PharmasistDashbordPage() {
         initComponents();
         conn = DataBase.DBconnect();
-        patienttable.getTableHeader().setBackground(new Color(32,136,203));
-        patienttable.getTableHeader().setForeground(Color.WHITE);
-        patienttable.setSelectionForeground(Color.WHITE);
-        patienttable.setSelectionBackground(Color.RED);
-        newid = id;
-        drefresh2.doClick();
+        prefresh.doClick();
+        pharmasisttable.getTableHeader().setBackground(new Color(32,136,203));
+        pharmasisttable.getTableHeader().setForeground(Color.WHITE);
+        pharmasisttable.setSelectionForeground(Color.WHITE);
+        pharmasisttable.setSelectionBackground(Color.RED);
     }
 
-    private DoctorDashBordPage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,26 +35,27 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
         phistory = new javax.swing.JButton();
         dprescription = new javax.swing.JButton();
         pexit = new javax.swing.JButton();
-        drefresh2 = new javax.swing.JButton();
+        prefresh = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        patienttable = new javax.swing.JTable();
+        pharmasisttable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(54, 33, 89));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/—Pngtree—doctors medical hospital doctors_3811025.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/—Pngtree—colorful pharmacy and medicine icon_5007377.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         phistory.setBackground(new java.awt.Color(0, 107, 179));
         phistory.setFont(new java.awt.Font("Oswald", 0, 18)); // NOI18N
         phistory.setForeground(new java.awt.Color(255, 255, 255));
-        phistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-activity-history-24.png"))); // NOI18N
-        phistory.setText("Patient History");
+        phistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-medical-bag-26.png"))); // NOI18N
+        phistory.setText("Add Stock");
         phistory.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         phistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +67,7 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
         dprescription.setFont(new java.awt.Font("Oswald", 0, 18)); // NOI18N
         dprescription.setForeground(new java.awt.Color(255, 255, 255));
         dprescription.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-plus-24.png"))); // NOI18N
-        dprescription.setText("Prescription");
+        dprescription.setText("Add Drug");
         dprescription.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         dprescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,15 +87,15 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
             }
         });
 
-        drefresh2.setBackground(new java.awt.Color(0, 107, 179));
-        drefresh2.setFont(new java.awt.Font("Oswald", 0, 18)); // NOI18N
-        drefresh2.setForeground(new java.awt.Color(255, 255, 255));
-        drefresh2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-refresh-24.png"))); // NOI18N
-        drefresh2.setText("   Refresh");
-        drefresh2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        drefresh2.addActionListener(new java.awt.event.ActionListener() {
+        prefresh.setBackground(new java.awt.Color(0, 107, 179));
+        prefresh.setFont(new java.awt.Font("Oswald", 0, 18)); // NOI18N
+        prefresh.setForeground(new java.awt.Color(255, 255, 255));
+        prefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-refresh-24.png"))); // NOI18N
+        prefresh.setText("   Refresh");
+        prefresh.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        prefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                drefresh2ActionPerformed(evt);
+                prefreshActionPerformed(evt);
             }
         });
 
@@ -111,93 +104,76 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(drefresh2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pexit, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phistory, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dprescription, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(110, 110, 110))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(drefresh2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(prefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addComponent(dprescription, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addComponent(phistory, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83)
                 .addComponent(pexit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 830));
 
         jPanel3.setBackground(new java.awt.Color(110, 89, 222));
 
         jLabel2.setFont(new java.awt.Font("Oswald", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Doctor Dashboard");
+        jLabel2.setText("Pharmasist Dashboard");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(311, Short.MAX_VALUE)
+                .addContainerGap(310, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(296, 296, 296))
+                .addGap(246, 246, 246))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel2)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        patienttable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        patienttable.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 106, 1040, -1));
+
+        pharmasisttable.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        pharmasisttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "NAME", "AGE", "VIEW DATE", "ADDRESS", "PHONE", "DESEASE"
+                "PRIC_ID", "NAME", "VIEWDATE", "DESEASE", "AGE", "PRISCRIPTION"
             }
         ));
-        patienttable.setFocusable(false);
-        patienttable.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        patienttable.setRowHeight(50);
-        jScrollPane1.setViewportView(patienttable);
+        pharmasisttable.setFocusable(false);
+        pharmasisttable.setRowHeight(50);
+        pharmasisttable.setSelectionBackground(new java.awt.Color(255, 0, 0));
+        jScrollPane1.setViewportView(pharmasisttable);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(330, 330, 330)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(260, 260, 260)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 960, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,54 +191,40 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void phistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phistoryActionPerformed
-        PatientHistoryPage patientHistory = new PatientHistoryPage();
-        patientHistory.setVisible(true);
+       
     }//GEN-LAST:event_phistoryActionPerformed
 
     private void dprescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dprescriptionActionPerformed
-        DefaultTableModel tableModel = (DefaultTableModel) patienttable.getModel();
-        int row = patienttable.getSelectedRow();
-        String id = tableModel.getValueAt(row, 0).toString();
-        String name = tableModel.getValueAt(row, 1).toString();
-        String age = tableModel.getValueAt(row, 2).toString();
-        String date = tableModel.getValueAt(row,3).toString();
-        String desease = tableModel.getValueAt(row,6).toString();
-        PriscriptionPage pric = new PriscriptionPage(id,name,age,date,desease);
-        pric.setVisible(true);
+        
     }//GEN-LAST:event_dprescriptionActionPerformed
 
     private void pexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pexitActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_pexitActionPerformed
 
-    private void drefresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drefresh2ActionPerformed
-      DefaultTableModel tableModel = (DefaultTableModel) patienttable.getModel();
-      String sql = "SELECT * FROM patients WHERE doctorid=? AND done is null";
-      try {
-          pst = conn.prepareStatement(sql);
-          pst.setInt(1, newid);
-          res = pst.executeQuery();
-          tableModel.setRowCount(0);
-          while(res.next())
-          {
-              int id = res.getInt("id");
-              String nid = id+"";
-              String name = res.getString("name");
-              int age = res.getInt("age");
-              String newage = age+"";
-              String date = res.getString("viewdate");
-              String addr = res.getString("address");
-              int phone = res.getInt("phone");
-              String newphone = phone+"";
-              String desease = res.getString("desease");
-              tableModel.addRow(new Object [] {id,name,newage,date,addr,newphone,desease});
-          }
-         
-      } catch(Exception ex)
-      {
-          System.out.println("Something Went Wrong !" +ex);
-      }
-    }//GEN-LAST:event_drefresh2ActionPerformed
+    private void prefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prefreshActionPerformed
+        DefaultTableModel tableModel = (DefaultTableModel) pharmasisttable.getModel();
+        String sql = "SELECT * FROM priscription where done is null";
+        try {
+            pst = conn.prepareStatement(sql);
+            res = pst.executeQuery();
+            tableModel.setRowCount(0);
+            while(res.next())
+            {
+                int id = res.getInt("pric_id");
+                String newid = id + "";
+                String name = res.getString("name");
+                String date = res.getString("viewdate");
+                String desease = res.getString("desease");
+                int age = res.getShort("age");
+                String newage = age + "";
+                String pric = res.getString("priscription");
+                tableModel.addRow(new Object [] {newid,name,date,desease,newage,pric});
+            }
+        } catch(Exception ex) {
+            System.out.println("Something Went Wrong !" + ex);
+        }
+    }//GEN-LAST:event_prefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,35 +243,35 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DoctorDashBordPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PharmasistDashbordPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DoctorDashBordPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PharmasistDashbordPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DoctorDashBordPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PharmasistDashbordPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DoctorDashBordPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PharmasistDashbordPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DoctorDashBordPage().setVisible(true);
+                new PharmasistDashbordPage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton dprescription;
-    private javax.swing.JButton drefresh2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable patienttable;
     private javax.swing.JButton pexit;
+    private javax.swing.JTable pharmasisttable;
     private javax.swing.JButton phistory;
+    private javax.swing.JButton prefresh;
     // End of variables declaration//GEN-END:variables
 }

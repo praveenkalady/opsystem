@@ -142,6 +142,14 @@ public class UserLoginPage extends javax.swing.JFrame {
                    uutype.setSelectedIndex(-1);
                    uusername.requestFocus();
                    break;
+                case "Pharmasist" :
+                    PharmasistDashbordPage px = new PharmasistDashbordPage();
+                    px.setVisible(true);
+                    uusername.setText("");
+                    upassword.setText("");
+                    uutype.setSelectedIndex(-1);
+                    uusername.requestFocus();
+                    break;
               default :
                   JOptionPane.showMessageDialog(null,"Username and Password Incorrect !");
                    break;

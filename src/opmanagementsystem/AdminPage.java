@@ -6,7 +6,6 @@
 package opmanagementsystem;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.sql.Connection;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +25,6 @@ public class AdminPage extends javax.swing.JFrame {
         table.getTableHeader().setForeground(Color.WHITE);
         table.setRowHeight(50);
         table.setOpaque(false);
-        table.setFont(new Font("Segeo UI",Font.BOLD,12));
         table.setSelectionBackground(Color.RED);
         table.setSelectionForeground(Color.WHITE);
         refresh.doClick();
@@ -179,7 +177,7 @@ public class AdminPage extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        table.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        table.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -242,6 +240,7 @@ public class AdminPage extends javax.swing.JFrame {
            String sql = "SELECT * FROM user";
            pst = conn.prepareStatement(sql);
            res = pst.executeQuery();
+           tableModel.setRowCount(0);
            while(res.next())
            {
                int id = res.getInt("id");

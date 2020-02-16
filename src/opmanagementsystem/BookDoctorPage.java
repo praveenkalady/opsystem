@@ -100,7 +100,7 @@ public class BookDoctorPage extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Oswald", 0, 18)); // NOI18N
-        jLabel7.setText("Phone Number");
+        jLabel7.setText("Phone");
 
         pdoctorname.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         pdoctorname.addActionListener(new java.awt.event.ActionListener() {

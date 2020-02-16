@@ -196,6 +196,7 @@ public class ReceptionistDashBordPage extends javax.swing.JFrame {
            pst = conn.prepareStatement(sql);
            pst.setString(1, "Doctor");
            res = pst.executeQuery();
+           tableModel.setRowCount(0);
            while(res.next())
            {
               String name = res.getString("name");
