@@ -269,13 +269,14 @@
                   <Font name="Calibri" size="24" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="0">
+                  <Table columnCount="7" rowCount="0">
                     <Column editable="true" title="PRIC_ID" type="java.lang.Object"/>
                     <Column editable="true" title="NAME" type="java.lang.Object"/>
                     <Column editable="true" title="VIEWDATE" type="java.lang.Object"/>
                     <Column editable="true" title="DESEASE" type="java.lang.Object"/>
                     <Column editable="true" title="AGE" type="java.lang.Object"/>
                     <Column editable="true" title="PRISCRIPTION" type="java.lang.Object"/>
+                    <Column editable="true" title="P_ID" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>

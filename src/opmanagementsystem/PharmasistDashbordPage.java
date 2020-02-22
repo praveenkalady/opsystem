@@ -165,7 +165,7 @@ public class PharmasistDashbordPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "PRIC_ID", "NAME", "VIEWDATE", "DESEASE", "AGE", "PRISCRIPTION"
+                "PRIC_ID", "NAME", "VIEWDATE", "DESEASE", "AGE", "PRISCRIPTION", "P_ID"
             }
         ));
         pharmasisttable.setFocusable(false);
@@ -195,7 +195,12 @@ public class PharmasistDashbordPage extends javax.swing.JFrame {
     }//GEN-LAST:event_phistoryActionPerformed
 
     private void dprescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dprescriptionActionPerformed
-        
+        DefaultTableModel tableModel = (DefaultTableModel) pharmasisttable.getModel();
+        int row = pharmasisttable.getSelectedRow();
+        String id = tableModel.getValueAt(row, 6).toString();
+        String name = tableModel.getValueAt(row, 1).toString();
+        AddDrugPage drug = new AddDrugPage(id,name);
+        drug.setVisible(true);
     }//GEN-LAST:event_dprescriptionActionPerformed
 
     private void pexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pexitActionPerformed
@@ -204,7 +209,7 @@ public class PharmasistDashbordPage extends javax.swing.JFrame {
 
     private void prefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prefreshActionPerformed
         DefaultTableModel tableModel = (DefaultTableModel) pharmasisttable.getModel();
-        String sql = "SELECT * FROM priscription where done is null";
+        String sql = "SELECT * FROM priscription WHERE done is null";
         try {
             pst = conn.prepareStatement(sql);
             res = pst.executeQuery();
@@ -218,8 +223,11 @@ public class PharmasistDashbordPage extends javax.swing.JFrame {
                 String desease = res.getString("desease");
                 int age = res.getShort("age");
                 String newage = age + "";
-                String pric = res.getString("priscription");
-                tableModel.addRow(new Object [] {newid,name,date,desease,newage,pric});
+                String priscription = res.getString("priscription");
+                int patient = res.getInt("p_id");
+                String patientId = patient + "";
+                tableModel.addRow(new Object [] {newid,name,date,desease,newage,priscription,patientId});
+                
             }
         } catch(Exception ex) {
             System.out.println("Something Went Wrong !" + ex);
