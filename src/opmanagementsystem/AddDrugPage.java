@@ -278,6 +278,7 @@ public class AddDrugPage extends javax.swing.JFrame {
             }
             String newtotal = cal + "";
             target.setText(newtotal);
+            pst.close();
         } catch(Exception ex) {
             System.out.println("Something Went Wrong !" +ex);
         }
@@ -299,6 +300,16 @@ public class AddDrugPage extends javax.swing.JFrame {
             model2.addRow(row);
         }
         invoice.setVisible(true);
+        try{
+            String sql = "UPDATE priscription SET done=1 WHERE p_id=?";
+            String id = pricid.getText();
+            int newid = Integer.parseInt(id);
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, newid);
+            pst.executeUpdate();
+        } catch(Exception ex)
+        {
+            System.out.println("Something Went Wrong !" +ex);        }
     }//GEN-LAST:event_printActionPerformed
 
     private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed

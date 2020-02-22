@@ -49,21 +49,21 @@ public class UserLoginPage extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
 
         uusername.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jPanel1.add(uusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 408, 54));
+        jPanel1.add(uusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 408, 40));
 
         upassword.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jPanel1.add(upassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 408, 53));
+        jPanel1.add(upassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 408, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-administrator-male-30.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 30, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-lock-24.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
 
         uutype.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         uutype.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Receptionist", "Doctor", "Pharmasist" }));
         uutype.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jPanel1.add(uutype, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 408, 55));
+        jPanel1.add(uutype, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 408, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-user-account-24.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, -1, -1));

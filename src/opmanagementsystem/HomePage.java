@@ -129,7 +129,7 @@ public class HomePage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Oswald", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Royal Hospital");
+        jLabel1.setText("LIFE CARE");
 
         jLabel2.setFont(new java.awt.Font("Oswald", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

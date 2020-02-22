@@ -88,10 +88,10 @@ public class AdminLoginPage extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 5, -1, -1));
 
         password.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 552, 408, 53));
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, 408, 40));
 
         username.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 326, 408, 54));
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 408, 40));
 
         login.setBackground(new java.awt.Color(0, 153, 0));
         login.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -116,10 +116,10 @@ public class AdminLoginPage extends javax.swing.JFrame {
         jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 661, 117, 53));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-administrator-male-30.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-lock-24.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
