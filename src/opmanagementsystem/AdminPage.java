@@ -40,7 +40,6 @@ public class AdminPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         refresh = new javax.swing.JButton();
         deleteuser = new javax.swing.JButton();
-        updateuser = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         adduser = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -78,18 +77,6 @@ public class AdminPage extends javax.swing.JFrame {
         deleteuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteuserActionPerformed(evt);
-            }
-        });
-
-        updateuser.setBackground(new java.awt.Color(0, 107, 179));
-        updateuser.setFont(new java.awt.Font("Oswald", 0, 18)); // NOI18N
-        updateuser.setForeground(new java.awt.Color(255, 255, 255));
-        updateuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-update-user-32.png"))); // NOI18N
-        updateuser.setText("Update User");
-        updateuser.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        updateuser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateuserActionPerformed(evt);
             }
         });
 
@@ -131,7 +118,6 @@ public class AdminPage extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteuser, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateuser, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(adduser, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(91, Short.MAX_VALUE))
@@ -147,11 +133,9 @@ public class AdminPage extends javax.swing.JFrame {
                 .addComponent(adduser, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(deleteuser, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(updateuser, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(64, 64, 64)
                 .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(110, 89, 222));
@@ -213,7 +197,7 @@ public class AdminPage extends javax.swing.JFrame {
                 .addGap(81, 81, 81)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(jScrollPane1))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -253,7 +237,7 @@ public class AdminPage extends javax.swing.JFrame {
                String utype = res.getString("usertype");
                tableModel.addRow(new Object [] {newid,name,uname,newage,quali,special,utype});
            }
-           
+           pst.close();
        } catch(Exception ex)
        {
            System.out.println("Something Went Wrong !" +ex);
@@ -261,12 +245,22 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_refreshActionPerformed
 
     private void deleteuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteuserActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+        int row = table.getSelectedRow();
+        String id = (String) table.getValueAt(row, 0);
+        int newid = Integer.parseInt(id);
+        String sql = "DELETE FROM user WHERE id=?";
+        try{
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, newid);
+            pst.executeUpdate();
+            refresh.doClick();
+        } catch(Exception ex) 
+        {
+            System.out.println("Something Went Wrong !" + ex);
+        }
+        
     }//GEN-LAST:event_deleteuserActionPerformed
-
-    private void updateuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateuserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateuserActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
        this.setVisible(false);
@@ -324,6 +318,5 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JButton logout;
     private javax.swing.JButton refresh;
     private javax.swing.JTable table;
-    private javax.swing.JButton updateuser;
     // End of variables declaration//GEN-END:variables
 }
