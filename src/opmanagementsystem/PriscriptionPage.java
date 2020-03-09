@@ -14,7 +14,8 @@ public class PriscriptionPage extends javax.swing.JFrame {
     PreparedStatement pst,pst2;
     ResultSet res;
     int paid;
-    public PriscriptionPage(String id,String name,String age,String date,String desease) {
+    String place,address,docname;
+    public PriscriptionPage(String id,String name,String age,String date,String desease,String addr,String doname) {
         initComponents();
         conn = DataBase.DBconnect();
         conn2 = DataBase.DBconnect();
@@ -22,7 +23,9 @@ public class PriscriptionPage extends javax.swing.JFrame {
         pricname.setText(name);
         pricage.setText(age);
         pricdate.setText(date);
-        pricdesease.setText(desease);
+       place = desease;
+       address = addr;
+        docname = doname;
     }
 //    public void deleteFunction() {
 //        String sql = "DELETE FROM patients WHERE id=?";
@@ -259,7 +262,7 @@ public class PriscriptionPage extends javax.swing.JFrame {
        String desease = pricdesease.getText();
        String priscription = pricpriscription.getText();
        try {
-           String sql = "INSERT INTO priscription(p_id,name,viewdate,desease,age,priscription) VALUES(?,?,?,?,?,?)";
+           String sql = "INSERT INTO priscription(p_id,name,viewdate,desease,age,priscription,place,address,doctor_name) VALUES(?,?,?,?,?,?,?,?,?)";
            pst = conn.prepareStatement(sql);
            pst.setInt(1, newid);
            pst.setString(2, pname);
@@ -267,6 +270,9 @@ public class PriscriptionPage extends javax.swing.JFrame {
            pst.setString(4, desease);
            pst.setInt(5, newage);
            pst.setString(6, priscription);
+           pst.setString(7, place);
+           pst.setString(8, address);
+           pst.setString(9, docname);
            pst.executeUpdate();
            JOptionPane.showMessageDialog(null,"Priscription Added Successfully !");
            pst.close();

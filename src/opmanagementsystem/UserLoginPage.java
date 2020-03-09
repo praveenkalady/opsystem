@@ -132,15 +132,18 @@ public class UserLoginPage extends javax.swing.JFrame {
                    upassword.setText("");
                    uutype.setSelectedIndex(-1);
                    uusername.requestFocus();
+                   dispose();
                     break;
                 case "Doctor" :
                    int id = res.getInt("id");
-                   DoctorDashBordPage docpage = new DoctorDashBordPage(id);
+                   String nam = res.getString("name");
+                   DoctorDashBordPage docpage = new DoctorDashBordPage(id,nam);
                    docpage.setVisible(true);
                    uusername.setText("");
                    upassword.setText("");
                    uutype.setSelectedIndex(-1);
                    uusername.requestFocus();
+                   dispose();
                    break;
                 case "Pharmasist" :
                     PharmasistDashbordPage px = new PharmasistDashbordPage();
@@ -149,6 +152,7 @@ public class UserLoginPage extends javax.swing.JFrame {
                     upassword.setText("");
                     uutype.setSelectedIndex(-1);
                     uusername.requestFocus();
+                    dispose();
                     break;
               default :
                   JOptionPane.showMessageDialog(null,"Username and Password Incorrect !");

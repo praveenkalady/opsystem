@@ -18,7 +18,7 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
     ResultSet res;
     PreparedStatement pst;
     int newid;
-    public DoctorDashBordPage(int id) {
+    public DoctorDashBordPage(int id,String name) {
         initComponents();
         conn = DataBase.DBconnect();
         patienttable.getTableHeader().setBackground(new Color(32,136,203));
@@ -26,10 +26,12 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
         patienttable.setSelectionForeground(Color.WHITE);
         patienttable.setSelectionBackground(Color.RED);
         newid = id;
+        String doname = name;
+        docname.setText(name);
         drefresh2.doClick();
     }
 
-    private DoctorDashBordPage() {
+    DoctorDashBordPage() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -48,10 +50,12 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         patienttable = new javax.swing.JTable();
+        docname = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(54, 33, 89));
 
@@ -139,6 +143,8 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
                 .addContainerGap(136, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jPanel3.setBackground(new java.awt.Color(110, 89, 222));
 
         jLabel2.setFont(new java.awt.Font("Oswald", 1, 48)); // NOI18N
@@ -150,7 +156,7 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(311, Short.MAX_VALUE)
+                .addContainerGap(401, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(296, 296, 296))
         );
@@ -162,13 +168,15 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 63, 1080, -1));
+
         patienttable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         patienttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "NAME", "AGE", "VIEW DATE", "ADDRESS", "PHONE", "DESEASE"
+                "ID", "NAME", "AGE", "VIEW DATE", "ADDRESS", "PHONE", "PLACE"
             }
         ));
         patienttable.setFocusable(false);
@@ -176,28 +184,10 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
         patienttable.setRowHeight(50);
         jScrollPane1.setViewportView(patienttable);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(330, 330, 330)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(260, 260, 260)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 257, 1002, 550));
+
+        docname.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jPanel1.add(docname, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 370, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,9 +216,12 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
         String name = tableModel.getValueAt(row, 1).toString();
         String age = tableModel.getValueAt(row, 2).toString();
         String date = tableModel.getValueAt(row,3).toString();
-        String desease = tableModel.getValueAt(row,6).toString();
-        PriscriptionPage pric = new PriscriptionPage(id,name,age,date,desease);
+        String desease = tableModel.getValueAt(row,5).toString();
+        String address = tableModel.getValueAt(row, 4).toString();
+        String doname = docname.getText();
+        PriscriptionPage pric = new PriscriptionPage(id,name,age,date,desease,address,doname);
         pric.setVisible(true);
+     
     }//GEN-LAST:event_dprescriptionActionPerformed
 
     private void pexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pexitActionPerformed
@@ -254,7 +247,7 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
               String addr = res.getString("address");
               int phone = res.getInt("phone");
               String newphone = phone+"";
-              String desease = res.getString("desease");
+              String desease = res.getString("place");
               tableModel.addRow(new Object [] {id,name,newage,date,addr,newphone,desease});
           }
          
@@ -300,8 +293,9 @@ public class DoctorDashBordPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel docname;
     private javax.swing.JButton dprescription;
-    private javax.swing.JButton drefresh2;
+    public javax.swing.JButton drefresh2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

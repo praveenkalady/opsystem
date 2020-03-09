@@ -120,7 +120,7 @@ public class BookDoctorPage extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Oswald", 0, 18)); // NOI18N
-        jLabel9.setText("Desease");
+        jLabel9.setText("Place");
 
         pexit.setBackground(new java.awt.Color(255, 51, 51));
         pexit.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -231,10 +231,6 @@ public class BookDoctorPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pdeseaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdeseaseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pdeseaseActionPerformed
-
     private void pageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pageActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pageActionPerformed
@@ -264,13 +260,13 @@ public class BookDoctorPage extends javax.swing.JFrame {
         String age = page.getText();
         String address = paddress.getText();
         String phone = pphone.getText();
-        String desease = pdesease.getText();
         String doctor = pdoctorname.getText();
         String doctorid = pdoctorid.getText();
+        String place = pdesease.getText();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now(); 
         String strDate = dtf.format(now); 
-        String sql = "INSERT INTO patients(name,age,viewdate,address,phone,desease,doctor,doctorid) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO patients(name,age,viewdate,address,phone,doctorname,doctorid,place) VALUES(?,?,?,?,?,?,?,?)";
         try {
             pst = conn.prepareStatement(sql);
             pst.setString(1, name);
@@ -278,9 +274,9 @@ public class BookDoctorPage extends javax.swing.JFrame {
             pst.setString(3, strDate);
             pst.setString(4, address);
             pst.setString(5, phone);
-            pst.setString(6, desease);
-            pst.setString(7, doctor);
-            pst.setString(8, doctorid);
+            pst.setString(6, doctor);
+            pst.setString(7, doctorid);
+            pst.setString(8,place);
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Booking Successfull");
             pname.setText("");
@@ -297,6 +293,10 @@ public class BookDoctorPage extends javax.swing.JFrame {
             System.out.println("Something Went Wrong !" + ex);
         }
     }//GEN-LAST:event_pbook1ActionPerformed
+
+    private void pdeseaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdeseaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pdeseaseActionPerformed
 
     /**
      * @param args the command line arguments

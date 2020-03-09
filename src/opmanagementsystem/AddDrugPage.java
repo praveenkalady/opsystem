@@ -110,6 +110,11 @@ public class AddDrugPage extends javax.swing.JFrame {
         quantity.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         quantity.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "QTY", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50" }));
         quantity.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        quantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quantityActionPerformed(evt);
+            }
+        });
 
         adddrug.setBackground(new java.awt.Color(51, 153, 0));
         adddrug.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -315,6 +320,20 @@ public class AddDrugPage extends javax.swing.JFrame {
     private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
       this.setVisible(false);
     }//GEN-LAST:event_exit1ActionPerformed
+
+    private void quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityActionPerformed
+       String medi = medicine.getSelectedItem().toString();
+       int quant = Integer.parseInt(quantity.getSelectedItem().toString());
+       String sql = "UPDATE drug_stock SET quantity=quantity -? WHERE drg_name=?";
+       try{
+           pst = conn.prepareStatement(sql);
+           pst.setInt(1,quant);
+           pst.setString(2, medi);
+           pst.executeUpdate();
+       } catch(Exception ex){
+           System.out.println("Something Went Wrong !" + ex);
+       }
+    }//GEN-LAST:event_quantityActionPerformed
 
     /**
      * @param args the command line arguments

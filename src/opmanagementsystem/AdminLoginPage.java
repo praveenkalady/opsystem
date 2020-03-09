@@ -38,6 +38,7 @@ public class AdminLoginPage extends javax.swing.JFrame {
             String usr = res.getString("username");
             AdminPage admin = new AdminPage();
             admin.setVisible(true);
+            dispose();
         }
         else
         {

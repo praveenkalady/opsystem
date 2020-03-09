@@ -32,6 +32,7 @@ public class InvoicePage extends javax.swing.JFrame {
         String netttl = totl + "";
         netamt.setText(netttl);
         loadDetails();
+        
     }
     public void loadDetails()
     {
@@ -44,7 +45,7 @@ public class InvoicePage extends javax.swing.JFrame {
             {
                 pname.setText(res.getString("name"));
                 paddress.setText(res.getString("address"));
-                pcity.setText(res.getString("city"));
+                pcity.setText(res.getString("place"));
                 int ph = res.getInt("phone");
                 pphone.setText(ph + "");
             }
