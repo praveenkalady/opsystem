@@ -36,6 +36,7 @@ public class UserLoginPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         login = new javax.swing.JButton();
         exit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,7 +78,7 @@ public class UserLoginPage extends javax.swing.JFrame {
                 loginActionPerformed(evt);
             }
         });
-        jPanel1.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 661, 128, 53));
+        jPanel1.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 730, 128, 53));
 
         exit.setBackground(new java.awt.Color(255, 51, 51));
         exit.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -88,10 +89,21 @@ public class UserLoginPage extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 661, 117, 53));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 730, 117, 53));
+
+        jButton1.setBackground(new java.awt.Color(110, 89, 222));
+        jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Are You Forgot Your Password ?");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pina-messina-iIDiRMITYik-unsplash.jpg"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, -1, 830));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 830));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,6 +189,12 @@ public class UserLoginPage extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_exitActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       ForgotPasswordPage forgot = new ForgotPasswordPage();
+       forgot.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,6 +232,7 @@ public class UserLoginPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

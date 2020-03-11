@@ -103,6 +103,11 @@ public class AddDrugPage extends javax.swing.JFrame {
         medicine.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         medicine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Medicine" }));
         medicine.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        medicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medicineActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Oswald", 0, 18)); // NOI18N
         jLabel5.setText("Patient Name");
@@ -334,6 +339,10 @@ public class AddDrugPage extends javax.swing.JFrame {
            System.out.println("Something Went Wrong !" + ex);
        }
     }//GEN-LAST:event_quantityActionPerformed
+
+    private void medicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicineActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_medicineActionPerformed
 
     /**
      * @param args the command line arguments
